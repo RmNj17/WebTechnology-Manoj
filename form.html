@@ -1,0 +1,235 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <!--meta tags-->
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Form Validation</title>
+    <!--external css-->
+    <link href="./style.css" rel="stylesheet"/>
+
+    <!--google fonts integration from https://fonts.google.com -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="button.js"></script>
+    <!--internal css-->
+    <style>
+        #title {
+            color: forestgreen;
+        }
+
+        /*css variables*/
+        :root {
+            --primary-color: #b71d1c;
+            --secondary-color: green;
+            --default-padding: 14px;
+            --default-border-radius: 5px;
+        }
+
+        * {
+            border-radius: var(--default-border-radius);
+        }
+        body{
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+        .formWrapper {
+            max-width: 400px;
+            margin: auto;
+            padding: var(--default-padding);
+        }
+
+        #err_message {
+            display: none;
+            position: absolute;
+            top: 1em;
+            left: 55%;
+            background: #f19898;
+            color: #ffffff;
+            padding: 10px;
+            animation: bottomToTop 0.5s ease-in;
+        }
+        @keyframes bottomToTop {
+            0%   {top: -200px}
+            100% {top: 0}
+        }
+
+        #student-form {
+            display: grid;
+            gap: 10px;
+        }
+
+        #student-form input, button {
+            padding: var(--default-padding);
+            outline: none;
+            font-size: 15px;
+            border: 1px solid #cccccc;
+            color: #000;
+        }
+
+        /*css variables*/
+        #student-form input:focus {
+            border: 1px solid var(--secondary-color);
+        }
+
+        .dirty:invalid {
+            border: 1px solid var(--primary-color) !important;
+        }
+
+        #student-form button {
+            background: var(--primary-color);
+            color: #fefefe;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+        }
+
+        /*pseudo selectors*/
+        #student-form input:read-only {
+            border: 1px dotted #212121;
+            color: forestgreen;
+        }
+
+        /*Pseudo-classes*/
+        button:hover {
+            opacity: 0.6;
+        }
+
+        #student-card {
+            box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+            padding: 10px;
+            display: grid;
+            gap: 10px;
+        }
+
+        #results {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .name__text {
+            font-size: 16px;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        .age__text, .email__text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #747474;
+        }
+
+        .email__text {
+            color: #f85606;
+        }
+    </style>
+    <!--Internal JS in head-->
+    <script>
+        document.title = 'Form Validaton';
+    </script>
+
+</head>
+<body>
+<div class="formWrapper">
+    <h1 id="title">Student Form</h1>
+    <form id="student-form">
+        <input id="fName" name="fName" placeholder="First Name" required type="text">
+        <input id="lName" name="lName" placeholder="last Name" required type="text">
+        <input id="email" name="email" placeholder="Email" required type="email">
+        <input id="rollNo" name="rollNo" placeholder="Roll no" required type="text">
+        <input id="country" name="country" readonly type="text" value="Nepal">
+        <input min="15" max="80" id="age" name="age" placeholder="Age" required style="color:#000000;" type="number"> <!--inline css-->
+        <button type="submit">submit</button>
+    </form>
+    <div id="results"/>
+</div>
+
+<div id="err_message"/>
+<!--Internal JS in body-->
+<script>
+    let fName;
+    let lName;
+    let rollNo;
+    let age;
+    let email;
+    let students = [];
+    let formElem = document.getElementById('student-form');
+    let inputs = document.getElementsByTagName('input');
+    let errWrapper = document.getElementById('err_message');
+    let inputsArr = [...inputs];
+    inputsArr.forEach((input) => {
+        input.addEventListener('change', (ev) => {
+            switch (ev.target.name) {
+                case 'fName':
+                    ev.target.classList.add('dirty');
+                    fName = ev.target?.value;
+                    break;
+                case 'lName':
+                    ev.target.classList.add('dirty');
+                    lName = ev.target?.value;
+                    break;
+                case 'rollNo':
+                    ev.target.classList.add('dirty');
+                    rollNo = ev.target?.value;
+                    break;
+                case 'email':
+                    console.log(ev)
+                    ev.target.classList.add('dirty');
+                    email = ev.target?.value;
+                    break;
+                case 'age':
+                    ev.target.classList.add('dirty');
+                    if (ev.target.value > 10 && ev.target.value < 50) {
+                        age = ev.target?.value;
+                        errWrapper.style.display='none';
+                        return;
+                    }
+                   errorHandler(`Enter a valid age`)
+                    break;
+            }
+        })
+    })
+
+    formElem.addEventListener('submit', (e) => {
+        e.preventDefault();
+        students.push({fName, lName, rollNo, age, email});
+        formElem.reset();
+        generateHTML(students);
+    })
+    const errorHandler=(msg)=>{
+        let errorDiv = document.createElement('div');
+        errWrapper.innerHTML = '';
+        errorDiv.innerHTML = msg;
+        errWrapper.appendChild(errorDiv);
+        errWrapper.style.display='block';
+
+    }
+    const generateHTML = (data) => {
+        let target = document.getElementById('results');
+        let studentsResultsWrap = document.createElement('div');
+        data.forEach((item) => {
+            studentsResultsWrap.innerHTML =
+                `<div id="student-card">
+                    <span class="name__text">
+                        ${item.fName} ${item.lName}
+                    </span>
+                    <a href="mailto:${item.email}?subject=test" class="email__text">
+                        ${item.email}
+                    </a>
+                    <span class="age__text">
+                        ${item.age}
+                    </span>
+                </div>`
+        })
+        target.appendChild(studentsResultsWrap);
+    }
+
+
+    
+</script>
+
+</body>
+</html>

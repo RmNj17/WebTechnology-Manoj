@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sample Student Form</title>
+	<style type="text/css">
+		.std-form
+		{
+			display: grid;
+			gap: 1em;
+			margin: auto;
+			max-width: 500px;
+		}
+		.std-form input ,.std-form select
+		{
+			border-radius: 10px;
+			padding: 15px 10px;
+			border: 1px solid #d3d3d3;
+		}
+		.std-form input:active
+		{
+			border: 1px solid green;
+		}
+		.std-form button
+		{
+			outline: none;
+		    border: none;
+		    padding: 1rem;
+		    text-transform: uppercase;
+		    border-radius: 10px;
+		    cursor: pointer;
+		    color: #fff;
+		    display: flex;
+		    align-items: center;
+			gap: 10px;
+			justify-content: space-between;
+			background: lightseagreen;
+			font-weight: 500;
+			box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		let firstName;
+		let lastName;
+		let age;
+		let gender;
+		let intro;
+		let address;
+		let phoneNumber;
+
+		function handleChange(name,value) {
+			switch(name)
+			{
+				case "firstName":
+				firstName=value;
+				break;
+				case "lastName":
+				lastName=value;
+				break;
+				case "age":
+				age=value;
+				break;
+				case "gender":
+				gender=value;
+				break;
+				case "intro":
+				intro=value;
+				break;
+				case "address":
+				address=value;
+				break;
+				case "phoneNumber":
+				phoneNumber=value;
+				break;
+			}
+		}
+		function handleSubmit(){
+			let student={firstName,lastName,age,gender,intro,address,phoneNumber};
+			console.log(student);
+		}
+
+	</script>
+	<div class="std-form">
+		<input onchange="handleChange(this.name,this.value)" onkeydown="handlechange(this.name)" type="text" name="firstName" value="Manoj"placeholder="First name"/> 
+		<input onchange="handleChange(this.name,this.value)" type="text" name="lastName" placeholder="Last name"/> 
+		<input onchange="handleChange(this.name,this.value)" type="number" name="age" placeholder="Age"/>
+		<select onchange="handleChange(this.name,this.value)" name="gender">
+			<option disabled value="" selected>Select gender</option>
+			<option value="male">Male</option>
+			<option value="male">Female</option>
+			<option value="others">Others</option>
+		</select> 
+		<input onchange="handleChange(this.name,this.value)" type="text" name="intro" placeholder="Short Introduction"/> 
+		<input onchange="handleChange(this.name,this.value)" type="text" name="address" placeholder="Address"/>
+		<input onchange="handleChange(this.name,this.value)" type="tel" name="phoneNo" placeholder="Phone Number"/>
+		<button onchange="handleChange(this.name,this.value)" onclick="handleSubmit()">
+			<span>Submit</span>
+		</button>
+	</div>
+
+</body>
+</html>

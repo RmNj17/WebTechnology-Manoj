@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    <title>Demo Website</title>
+    <style>
+        body {
+             max-width: 700px; 
+            margin: auto;
+            padding: 10px;
+
+        }
+        h3{
+            color: #747474;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #b71d1c;
+        }
+
+        p {
+            font-size: 14px;
+            color: #5a5a5a;
+        }
+
+        .__items_center {
+            text-align: center;
+        }
+        a{
+            text-transform: capitalize;
+        }
+        .navWrap{
+            display: flex;
+            gap: 10px;
+        }
+        legend {
+            margin:0 auto;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        #studentForm{
+            width: 60%;
+            display: grid;
+            gap: 10px;
+
+        }
+
+        .inputClass,#studentForm,input {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 10px;
+        }
+        .flex {
+            display: flex; 
+            gap:20px;   
+        }
+
+        button {
+            border-radius: 20px;
+            outline: none;
+            border: 1px solid #ccc;
+            width: 50%;
+            margin: auto;
+        }
+
+        button:hover {
+            opacity: 0.6;
+            background: lightskyblue;
+
+        }
+
+        #mycanvas{
+            border: 1px solid red;
+
+
+        }
+        #mycanvas2{
+            border: 1px solid blueviolet;
+
+
+        }
+        
+    </style>
+</head>
+    <body>
+        
+        <fieldset>
+            <legend>Sample HTML Design</legend>
+            <div class="navWrap">
+                <a href="#">home</a>
+                <a href="#">about</a>
+                <a href="#">contact</a>
+            </div>
+            <h1>Heading1</h1>
+            <h3>Heading3</h3>
+            <div class="__items_center">
+                <img alt="Image alt"
+                     src="https://images.hindustantimes.com/img/2021/06/22/550x309/nepal-pm-oli-gets-parliament-dissolved_a5bde55e-4b8e-11eb-8aea-a2a56bc65ca4_1624340318384.jpg"/>
+            </div>
+            <div>
+                <p>&lt;p&gt; tag: this is a paragraph. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid assumenda debitis, dolorem ducimus
+                    eius error est excepturi facere fuga fugiat, harum itaque laudantium magnam odit praesentium soluta velit veniam.</p>
+                <hr/>
+                <i> &lt;li&gt; tag: this is a italic text</i>
+                <hr/>
+                <small>&lt;small&gt; tag: this is a small text</small><br/>
+                <hr/>
+                <i>&lt;i&gt; tag: this is a italic text</i>
+                <hr/>
+                <p>&lt;sup&gt; tag: (a+b)<sup>2</sup></p>
+                <hr/>
+                <p>&lt;sub&gt; tag: (c+d)<sub>2</sub></p>
+                <hr/>
+
+            </div>
+            <b>Unordered list &lt;ul&gt; tag:</b>
+            <ul>
+                <li>&lt;li&gt; tag: Developer</li>
+                <li>&lt;li&gt; tag: Teacher</li>
+                <li>&lt;li&gt; tag: Human</li>
+
+            </ul>
+            <b>Ordered list &lt;ol&gt; tag:</b>
+            <ol>
+                <li>&lt;li&gt; tag: Item1</li>
+                <li>&lt;li&gt; tag: Item2</li>
+                <li>&lt;li&gt; tag: Item3</li>
+            </ol>
+        
+        </fieldset>
+
+
+            <fieldset>
+                <legend>HTML Forms</legend>
+
+                <form action="" id="studentForm">
+                    <div class="flex">
+                        <input class="inputClass" type="text" placeholder="First name" required>
+                        <input class="inputClass" type="text" placeholder="Last name" required>
+                    </div>
+                   
+                    <input class="inputClass" type="number" placeholder="roll" required>
+                    <input class="inputClass" type="text" placeholder="class" required>
+                    <input class="inputClass" type="text" placeholder="address" required>
+                    <select name="" id="">
+                        <option value="">Male</option>
+                        <option value="">Female</option>
+                    </select>
+                    <input type="file">
+                    <input type="color">
+                    <button onsubmit="submit">Submit</button>
+                    
+                </form>
+            </fieldset>
+
+            <fieldset>
+                <legend>Use of iframe</legend>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YXXlSG-du7c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            </fieldset>
+            
+
+
+           <script>
+                function submit(){
+                            alert('Form Submitted')
+                }
+
+                </script> 
+
+               
+
+
+
+                <fieldset>
+                    <legend>Canvas Line</legend>
+
+                    <canvas id="mycanvas">
+                   
+
+                    </canvas>
+
+                </fieldset>
+
+               
+
+                <script>
+                    let canvas = document.getElementById('mycanvas');
+                    let context = canvas.getContext('2d');
+                    context.moveTo(10,45);
+                    context.lineTo(180,47);
+                    context.strokeStyle = "green";
+                    context.stroke();
+
+                    context.beginPath();
+
+                    context.moveTo(180,47);
+                    context.lineTo(480,247);
+                    context.strokeStyle = "black";
+                    context.stroke();
+
+
+               </script>
+
+               <script>
+                
+                    var ctx = document.getElementById("mycanvas2");
+                    var ctx = c.getContext("2d");
+                    context.arc(95,50,40,0,2*Math.PI);
+                    context.stroke();
+               </script>
+
+
+
+               
+
+    </body>
+</html>

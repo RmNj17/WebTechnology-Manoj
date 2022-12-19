@@ -1,0 +1,116 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>Canvas</title>
+  <style>
+      body {
+          padding: 20px;
+          font-family: sans-serif;
+      }
+
+      #paint {
+          border: 1px solid #1e40af;
+          width: 100%;
+          height: 100vh;
+          margin: 10px;
+      }
+
+      #line-width {
+        display: inline;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 20px;
+          padding: 4px 5px;
+          border-radius: 5px;
+          background: #e5e5e5;
+          width: fit-content;
+      }
+      #line-color{
+        display: inline;
+        font-weight: bold;
+          text-transform: uppercase;
+          font-size: 20px;
+          padding: 4px 5px;
+          border-radius: 5px;
+          background: #e5e5e5;
+          width: fit-content;
+      }
+  </style>
+</head>
+<body>
+<div id="line-width">S</div>
+<div id="line-color">Red</div>
+<canvas id="paint"></canvas>
+<script>
+  let elem = document.getElementById("paint");
+  let context = elem.getContext("2d");
+  let drawing = false;
+  let x;
+  let y;
+  let lineWidth = 5;
+  let lineColor = "red";
+  elem.addEventListener("mousedown", (event) => {
+    drawing = true;
+    x = event.clientX;
+    y = event.clientY;
+    console.log(event);
+
+  });
+  elem.addEventListener("mouseup", (event) => {
+    context.beginPath();
+    drawing = false;
+  });
+  window.addEventListener("keypress", (e) => {
+    console.log(e.key);
+    let lineElem = document.getElementById("line-width");
+    let colorElem = document.getElementById("line-color");
+    switch (e.key) {
+      case "b":
+        lineElem.innerHTML = "B";
+        lineWidth = 20;
+        break;
+      case "s":
+        lineElem.innerHTML = "S";
+        lineWidth = 10;
+        break;
+      
+      case "r":
+        lineColor = "red";
+        colorElem.innerHTML ="red";
+        break;
+      
+      case "g":
+        lineColor = "green";
+        colorElem.innerHTML = "green" ; 
+        break;
+      
+      case "o":
+        lineColor = "orange";
+        colorElem.innerHTML = "orange";
+        break;
+      default:
+        lineElem.innerHTML = "S";
+        lineWidth = 5;
+    }
+
+
+  });
+
+
+
+  elem.addEventListener("mousemove", (event) => {
+    if (drawing) {
+      context.moveTo(x, y);
+      context.lineTo(x - event.offsetX, y - event.offsetY);
+      console.log(context);
+      context.strokeStyle = lineColor ;
+      context.lineWidth = lineWidth;
+      context.stroke();
+    }
+  });
+</script>
+</body>
+</html

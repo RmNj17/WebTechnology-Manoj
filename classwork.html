@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classwork</title>
+
+    <style>
+        form{
+            display: grid;
+            /* margin: 20px; */
+            gap: 10px;
+        }
+
+        input,button {
+            width: 50%;
+            margin: 10px auto;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <fieldset>
+        <legend>Simple Arithmetic Calculation</legend>
+
+        <form id="adder" onsubmit="return add(); return sub();">
+            <input type="number" name="num1" id='num1' placeholder="Enter the first number">
+            <input type="number" name="num2" id='num2' placeholder="Enter the second number">
+          
+            <button id="add" type="button">Add</button>
+            <button id="sub" type="button">Subtract</button>
+            <input type="text" name="num3" id="result"  placeholder="Result" readonly>
+          
+            <button type="button" id="btn">Clear</button>
+          </form>
+
+    </fieldset>
+
+
+    <script>
+   const btn = document.getElementById('btn');
+   const sum = document.getElementById('add');
+   const diff = document.getElementById('sub');
+
+
+
+
+    function add() {
+
+        const num1 = parseInt(document.getElementById('num1').value);
+        const num2 = parseInt(document.getElementById('num2').value);
+        const result = document.getElementById('result');
+            if (num1 && num2 !== NaN) {
+                    let sum = num1 + num2;
+                    result.value = sum;
+                    return false;
+
+
+                            } else {
+                                 alert("Enter Valid Number");
+                                        }
+                    }
+
+                    
+                    function subtract() {
+
+const num1 = parseInt(document.getElementById('num1').value);
+const num2 = parseInt(document.getElementById('num2').value);
+const result = document.getElementById('result');
+    if (num1 && num2 !== NaN) {
+            let difference = num1 - num2;
+            result.value = difference;
+            return false;
+
+
+                    } else {
+                         alert("Enter Valid Number");
+                                }
+            }
+
+                    
+sum.addEventListener('click', () => {
+  add();
+});
+
+diff.addEventListener('click', () => {
+  subtract();
+});
+
+
+btn.addEventListener('click', () => {
+  num1.value = " ";
+  num2.value = " ";
+  result.value = " ";
+});
+    </script>
+    
+</body>
+</html>

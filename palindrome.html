@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classwork</title>
+    <style>
+        input{
+            width: 50%;
+            margin:10px auto;
+
+        }
+    </style>
+</head>
+<body>
+    <input placeholder="Enter First number" id="first_num" type="number">
+    <input placeholder="Enter Second number" id="second_num" type="number">
+    <input placeholder="Enter a string" id="palindrome">
+    <div id="result1"/>
+    <div id="result"/>
+    <button onclick="handleOperations()">Submit</button>
+    <button onclick="checkPalindrome()">checkPalindrome</button>
+    <button type="button" id="btn">Clear</button>
+    <script>
+         const btn = document.getElementById('btn');
+        function handleOperations(){
+            let num1=parseInt(document.getElementById('first_num').value);
+            let num2=parseInt(document.getElementById('second_num').value);
+            let resultWrap=document.getElementById('result');
+            let sum=num1+num2;
+            let diff=num1-num2;
+            let multi=num1*num2;
+
+            resultWrap.innerHTML=`The sum of ${num1} and ${num2} is ${sum} <br>
+            The difference of ${num1} and ${num2} is ${diff}
+            <br>
+            The multiplication of ${num1} and ${num2} is ${multi}`;
+
+
+        }
+        function checkPalindrome()
+        {
+            let string=document.getElementById('palindrome').value;
+            let stringToArr=string.split('');
+            let stringReverse=stringToArr.reverse();
+            let finalStr=stringReverse.join('');
+            if(string==="" && string.length<3)
+            {
+                alert('Enter a proper string');
+                return;
+            }
+            if(string==finalStr)
+            {
+                alert('This is a palindrome.');
+            }
+            else{
+               
+                alert('This is not  a palindrome.');
+            }
+        }
+
+
+
+  btn.addEventListener('click', () => {
+  first_num.value = " ";
+  second_num.value = " ";
+  result.value = " ";
+});
+
+    </script>
+</body>
+</html>
