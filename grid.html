@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+
+            <style>
+
+                    @media screen and max-width:1200px {
+                        .main_wrapper{
+                            grid-template-columns: repeat(4,1fr);
+                        }
+                        
+                    }
+                    @media screen and max-width:900px {
+                        .main_wrapper{
+                            grid-template-columns: repeat(3,1fr);
+                        }
+                        
+                    }
+                    @media screen and max-width:700px {
+                        .main_wrapper{
+                            grid-template-columns: repeat(2,1fr);
+                        }
+                        
+                    }
+
+                .main_wrapper {
+                        display: grid;
+                        grid-template-columns: repeat(3,1fr);
+                        gap: 10px;
+
+                }
+
+                body{
+                    font-family:sans-serif;
+                }
+
+                .card_wrapper {
+                    display: grid;
+                    flex-direction: column;
+                    gap: 10px;
+                    width: 60%;
+                    box-shadow: rgba(50,50,93,0.25) 0px 50px 100px -20px, rgba(0,0,0,0.3) 0px 30px 60px -30px, rgba(10,37,64,0.15) 0px -2px 6px 0px inset ;
+
+                }
+
+
+                .card_content_wrapper {
+                    padding: 0 10px 10px;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 10px;
+                }
+
+                .card_title{
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: lightcoral;
+                }
+
+                .card_subtitle{
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: lightblue;
+
+                }
+
+
+
+            </style>
+</head>
+<body>
+
+    <div class="main_wrapper">
+        <div class="card_wrapper">
+
+            <div class="card_img">
+                <img src="./profile.jpg"  height="200" width="100%"alt="">
+
+            </div>
+
+            <div class="card_content_wrapper">
+                        <span class="card_title">Title</span>
+                        <span class="card_subtitle">Subtitle</span>
+            </div>
+
+        </div>
+        <div class="card_wrapper">
+
+            <div class="card_img">
+                <img src="./profile.jpg"  height="200" width="100%"alt="">
+
+            </div>
+
+            <div class="card_content_wrapper">
+                        <span class="card_title">Title</span>
+                        <span class="card_subtitle">Subtitle</span>
+            </div>
+
+        </div> <div class="card_wrapper">
+
+            <div class="card_img">
+                <img src="./profile.jpg"  height="200" width="100%"alt="">
+
+            </div>
+
+            <div class="card_content_wrapper">
+                        <span class="card_title">Title</span>
+                        <span class="card_subtitle">Subtitle</span>
+            </div>
+
+        </div> <div class="card_wrapper">
+
+            <div class="card_img">
+                <img src="./profile.jpg"  height="200" width="100%"alt="">
+
+            </div>
+
+            <div class="card_content_wrapper">
+                        <span class="card_title">Title</span>
+                        <span class="card_subtitle">Subtitle</span>
+            </div>
+
+        </div> <div class="card_wrapper">
+
+            <div class="card_img">
+                <img src="./profile.jpg"  height="200" width="100%"alt="">
+
+            </div>
+
+            <div class="card_content_wrapper">
+                        <span class="card_title">Title</span>
+                        <span class="card_subtitle">Subtitle</span>
+            </div>
+
+        </div> <div class="card_wrapper">
+
+            <div class="card_img">
+                <img src="./profile.jpg"  height="200" width="100%"alt="">
+
+            </div>
+
+            <div class="card_content_wrapper">
+                        <span class="card_title">Title</span>
+                        <span class="card_subtitle">Subtitle</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

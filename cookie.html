@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Cookie</title>
+    <script>
+        let date=new Date();
+        let hoursToAdd=date.getHours()+24;
+        date.setHours(hoursToAdd);
+        // console.log(date)
+        document.cookie=`username=Manoj; expires=${date}`;//value 1
+        cookieHandler('student','Ram',2); //value 2
+        cookieHandler('loggedIn','false',2); //value 3
+        getCookieByName('student');
+        function cookieHandler(cookieName,cookieValue,expireHours){
+            let date=new Date();
+            let currHours=date.getHours();
+            date.setHours(currHours+expireHours);
+            document.cookie=`${cookieName}=${cookieValue}; expires=${date}`;
+        }
+        function getCookieByName(name){
+            let cookieKey=`${name}=`;
+            let decodedCookie=decodeURIComponent(document.cookie);
+            console.log(decodedCookie)
+        }
+
+    </script>
+</head>
+
+</html>

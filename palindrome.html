@@ -4,42 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classwork</title>
-    <style>
-        input{
-            width: 50%;
-            margin:10px auto;
-
-        }
-    </style>
+    <title>Paliindrome</title>
 </head>
 <body>
-    <input placeholder="Enter First number" id="first_num" type="number">
-    <input placeholder="Enter Second number" id="second_num" type="number">
+
     <input placeholder="Enter a string" id="palindrome">
-    <div id="result1"/>
-    <div id="result"/>
-    <button onclick="handleOperations()">Submit</button>
-    <button onclick="checkPalindrome()">checkPalindrome</button>
-    <button type="button" id="btn">Clear</button>
+    <button onclick="check()">checkPalindrome</button>
     <script>
-         const btn = document.getElementById('btn');
-        function handleOperations(){
-            let num1=parseInt(document.getElementById('first_num').value);
-            let num2=parseInt(document.getElementById('second_num').value);
-            let resultWrap=document.getElementById('result');
-            let sum=num1+num2;
-            let diff=num1-num2;
-            let multi=num1*num2;
-
-            resultWrap.innerHTML=`The sum of ${num1} and ${num2} is ${sum} <br>
-            The difference of ${num1} and ${num2} is ${diff}
-            <br>
-            The multiplication of ${num1} and ${num2} is ${multi}`;
-
-
-        }
-        function checkPalindrome()
+        function check()
         {
             let string=document.getElementById('palindrome').value;
             let stringToArr=string.split('');
@@ -59,14 +31,6 @@
                 alert('This is not  a palindrome.');
             }
         }
-
-
-
-  btn.addEventListener('click', () => {
-  first_num.value = " ";
-  second_num.value = " ";
-  result.value = " ";
-});
 
     </script>
 </body>

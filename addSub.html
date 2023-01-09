@@ -1,0 +1,81 @@
+
+<html>
+<head>
+    <title>Assignment</title>
+    <style>
+
+        input,button {
+            width: 50%;
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <fieldset>
+        <legend>Simple Arithmetic Calculation</legend>
+
+        <form >
+
+        <label class="input">Enter First Number:</label>
+        <input id="one">
+        <br>
+        <label class="input">Enter Second Number:</label>
+        <input id="two">
+    </form>
+
+<button onclick="calc()">Calculate</button>
+<p id="res">
+Addition Result:<input id="add"> <br>
+Subtraction Result:<input id="subtract">
+</p>
+
+<form>
+       <label>Enter number to check for Odd or Even:</label>
+       <input type="text"id="number">
+
+    <h4>The Entered Number is: <span id="result"></span></h4>
+ </form>
+ 
+ <input type="button"onclick="check()">
+
+</fieldset> 
+
+
+
+<script>
+    var numOne, numTwo, res,num;
+    function calc()
+    {
+      numOne = parseInt(document.getElementById("one").value);
+      numTwo = parseInt(document.getElementById("two").value);
+      if(numOne && numTwo)
+      {
+        res = numOne + numTwo;
+        document.getElementById("add").value = res;
+        res = numOne - numTwo;
+        document.getElementById("subtract").value = res;
+      }
+
+    }
+
+    function check() {
+ 
+   num = document.getElementById("number").value;
+   
+   if(!/^[0-9]+$/.test(num)){
+    alert("Please only enter numeric characters (Allowed input:0-9)")
+    }else{
+  		if(num % 2 == 0) {
+        var result = "Even!";
+     } else {
+        var result = "Odd!";
+        
+     }
+      document.getElementById("result").innerHTML = result;
+   }
+}
+    </script>
+</body>
+</html>
